@@ -1,0 +1,14 @@
+body{
+  padding: 0;
+  margin: 0;
+display: flex;
+}
+
+#rect{
+width: calc(100% / 3);
+height:  calc(100% / 3);
+background-color: aqua;
+margin: auto;
+justify-content: center;
+align-items: center;
+}
