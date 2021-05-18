@@ -11,4 +11,13 @@ background-color: aqua;
 margin: auto;
 justify-content: center;
 align-items: center;
+display: flex;
+}
+
+#text{
+  font-family: sans-serif;
+  font-size: 30pt;
+  text-align: center;
+  color: red;
+  display: inherit;
 }
