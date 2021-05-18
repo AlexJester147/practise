@@ -1,5 +1,8 @@
-const rect = document.querySelector('#rect')
+const Rect = document.querySelector('.rect');
 
-rect.addEventListener('click', () => {
-  navigator.vibrate(1000);
+console.log(Rect);
+
+
+Rect.addEventListener('click', () => {
+  navigator.vibrate(3000);
 });
