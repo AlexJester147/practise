@@ -1,8 +1,18 @@
-const Rect = document.querySelector('.rect');
 const text = document.querySelector('#text');
-console.log(text);
+const result = document.querySelector('.result');
 
+const keyValue = result.querySelector('#key-value');
+const keyCodeValue = result.querySelector('#keyCode-value');
+const codeValue = result.querySelector('#code-value');
+const charCodeValue = result.querySelector('#charCode-value');
 
-Rect.addEventListener('click', () => {
-  navigator.vibrate([100, 100, 200, 200, 300, 300, 400, 400, 500, 500, 600, 600, 700 ,700, 800, 800, 900, 900, 1000, 1000]);
+document.addEventListener('keydown',(event) => {
+
+keyValue.innerHTML = `${event.key}<br><div class="subscription">event.key</div>`;
+keyCodeValue.innerHTML = `${event.keyCode}<br><div class="subscription">event.keyCode</div>`;
+codeValue.innerHTML = `${event.code}<br><div class="subscription">event.code</div>`;
+charCodeValue.innerHTML = `${event.charCode}<br><div class="subscription">event.charCode</div>`;
+
+text.style.display = 'none';
+result.style.display = 'flex';
 });
