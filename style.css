@@ -1,6 +1,5 @@
 body{
-  padding: 0;
-  margin: 0;
+  margin: auto;
   display: flex;
   height: 100%;
 }
@@ -13,25 +12,65 @@ body{
 margin: auto;
 }
 
-.result{
+#rect{
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  position: fixed;
   display: none;
+  z-index: 99;
   justify-content: center;
   align-items: center;
-  color: black;
+  font-size: 50pt;
+  font-family: sans-serif;
+  color: white;
+  cursor: pointer;
+  outline: 0;
+  user-select: none;
+}
+
+.aim{
+  display: flex;
+  background-color: black;
+  width: 100px;
+  height: 100px;
   margin: auto;
-  font-size: 30pt;
-  font-family: 'Open Sans', sans-serif;
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  /* animation: Wid 2s infinite; */
+  transform-origin: right center;
 }
 
-.result > div{
-  width: 300px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-    line-height: 60px;
+@keyframes Wid{
+  0%{
+    width:50px;
+    height: 50px;
+  }
+  25%{
+    width: 100px;
+    height: 50px;
+  }
+  50%{
+    width: 100px;
+    height: 100px;
+  }
+  75%{
+    width: 50px;
+    height: 100px;
+  }
+  100%{
+    width: 50px;
+    height: 50px;
+  }
 }
 
-.subscription{
-  color: grey;
-  font-size: 20pt;
-}
+/* #rect.active{
+  /* transition: 2s all linear; */
+} */
+
+
+

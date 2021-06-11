@@ -1,18 +1,46 @@
 const text = document.querySelector('#text');
-const result = document.querySelector('.result');
+const rect = document.querySelector('#rect');
+const aim = document.querySelector('.aim');
+let count = 0;
 
-const keyValue = result.querySelector('#key-value');
-const keyCodeValue = result.querySelector('#keyCode-value');
-const codeValue = result.querySelector('#code-value');
-const charCodeValue = result.querySelector('#charCode-value');
+rect.style.display = 'flex';
 
-document.addEventListener('keydown',(event) => {
+const listener = (e) => {
+  rect.style.left = e.pageX - (rect.offsetWidth/2) + "px";
+  rect.style.top = e.pageY - (rect.offsetHeight/2) + "px";
 
-keyValue.innerHTML = `${event.key}<br><div class="subscription">event.key</div>`;
-keyCodeValue.innerHTML = `${event.keyCode}<br><div class="subscription">event.keyCode</div>`;
-codeValue.innerHTML = `${event.code}<br><div class="subscription">event.code</div>`;
-charCodeValue.innerHTML = `${event.charCode}<br><div class="subscription">event.charCode</div>`;
+  let Rect = rect.getBoundingClientRect();
+  let Aim = aim.getBoundingClientRect();
+  
+  if (Rect.top <= Aim.bottom && 
+    Rect.right >= Aim.left &&
+    Rect.left <= Aim.right &&
+    Rect.bottom >= Aim.top){
+      localStorage.setItem('key', count);
+      count = localStorage.getItem('key');
+    count++;
+    rect.textContent=count;
+    
+   
+    aim.style.opacity = '0';
+    aim.style.top = (Math.floor(Math.random()*window.innerHeight-aim.offsetHeight));
+    aim.style.left = (Math.floor(Math.random()*window.innerWidth-aim.offsetWidth));
+    aim.style.right = (Math.floor(Math.random()*window.innerWidth-aim.offsetWidth));
+    aim.style.bottom =  (Math.floor(Math.random()*window.innerHeight-aim.offsetHeight));
+  } else {
+    aim.style.opacity = '1';
+  }
 
-text.style.display = 'none';
-result.style.display = 'flex';
+};
+
+rect.addEventListener('mousedown', e => {
+    document.addEventListener('mousemove', listener);
+    
 });
+
+rect.addEventListener('mouseup', e => {
+    document.removeEventListener('mousemove', listener);
+});
+
+
+
